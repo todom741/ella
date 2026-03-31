@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+/* ────────────────────────────────────────
+   Design Tokens
+──────────────────────────────────────── */
+:root {
+  --font-pixel: "Pixelify Sans", system-ui, sans-serif;
+  --bg: rgb(22, 23, 28);
+  --accent: #aa3bff;
+}
+
+/* ────────────────────────────────────────
+   Base Styles
+──────────────────────────────────────── */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #9e3dff;
+  font-family: var(--font-pixel);
+}
+
+.App {
+  min-height: 100svh;
+  background: var(--bg);
+  padding: 20px 15px;
+}
+
+.dashboard-container {
+  max-width: 1126px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ────────────────────────────────────────
+   PIXEL FONT CLASSES
+──────────────────────────────────────── */
+.pixel-text {
+  font-family: var(--font-pixel);
+  font-weight: 600;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+  image-rendering: pixelated;
+  text-rendering: optimizeSpeed;
+}
+
+.pixel-text-light {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+}
+
+.pixel-bold {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+}
+
+/* Values class */
+.values {
+  font-family: var(--font-pixel);
+  color: white;
+  font-weight: 600;
+}
+
+/* ────────────────────────────────────────
+   DASHBOARD TABLES
+──────────────────────────────────────── */
+.dashboard-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 15px 0;
+  table-layout: auto;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border: none !important;
+  vertical-align: top;
+}
+
+.dashboard-table th {
+  font-weight: bold;
+  color: #9e3dff;
+}
+
+/* Default behavior for Latest Actions description */
+.actions-table td.description-cell,
+.dashboard-table td.description-cell {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow: visible !important;
+  text-overflow: clip;
+  hyphens: auto;
+  line-height: 1.45;
+}
+
+/* Keep time column compact */
+.actions-table td.time-cell,
+.dashboard-table td:nth-child(1) {
+  white-space: nowrap;
+  width: 88px;
+  min-width: 88px;
+}
+
+/* Tx column in Open Positions table - keep short */
+.dashboard-table:not(.actions-table) td:nth-child(2) {
+  font-size: 0.85em !important;
+  color: '#777';
+  font-family: 'monospace';
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 85px !important;
+}
+
+/* Animations */
+.new-item {
+  animation: slideInFromTop 0.6s ease-out forwards;
+}
+
+.action-row {
+  animation: slideInFromTop 0.5s ease-out forwards;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Headings */
+h2 {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  color: #9e3dff;
+  margin: 0 0 10px 0;
+}
+
+/* ────────────────────────────────────────
+   MOBILE RESPONSIVE FIXES
+──────────────────────────────────────── */
+@media only screen and (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px 5px;
+  }
+
+  /* Hide Entry and Current Price columns on mobile */
+  .dashboard-table th:nth-child(4),
+  .dashboard-table td:nth-child(4),
+  .dashboard-table th:nth-child(5),
+  .dashboard-table td:nth-child(5) {
+    display: none !important;
+  }
+
+  /* Make tables more compact */
+  .dashboard-table th,
+  .dashboard-table td {
+    padding: 6px 8px !important;
+    font-size: 0.92em;
+  }
+
+  .dashboard-table {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+}
+
+/* Link styling for Tx */
+a {
+  color: #777;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+a:hover {
+  color: #aa3bff;
+}
